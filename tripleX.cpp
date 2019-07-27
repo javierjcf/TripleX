@@ -1,11 +1,17 @@
 #include <iostream>
 
-int main()
+void PrintIntroduction()
+{
+    std::cout << "Hello, Agent X!\n";
+    std::cout << "Enter the correct code to continue! \n\n";
+}
+
+
+bool PlayGame()
 {
 
     // Print welcome messages to the terminal
-    std::cout << "Hello, Agent X!\n";
-    std::cout << "Enter the correct code to continue! \n\n";
+    PrintIntroduction();
 
     // Declare 3 number code
     const int CodeA = 4;
@@ -35,13 +41,25 @@ int main()
     // Check if player guess is correct
     if (GuessSum == CodeSum && GuessProduct == CodeProduct)
     {
-        std::cout << "\nYou Win!";
+        std::cout << "\nYou Win!\n\n\n";
+        return true;
     }
     else
     {
-        std::cout << "\nYou Loose!";
+        std::cout << "\nYou Loose!\n\n\n";
+        return false;
     }
-    
+}
 
+
+int main()
+{
+    while(true)
+    {
+        bool bLevelComplete = PlayGame();
+        std::cin.clear(); // Clears any errors
+        std::cin.ignore(); // Discards the buffer
+        PlayGame();
+    }
     return 0;
 }
